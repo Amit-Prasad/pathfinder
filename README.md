@@ -93,6 +93,24 @@ python -m pathfinder.main --mcts --iterations 5 --children 3
 python -m pathfinder.main --algorithm mcts --iterations 5
 ```
 
+### Directed Acyclic Graph (DAG) Variant
+By default, standard MCTS/PUCT generates new search nodes (child strategies) by expanding a single parent node. Pathfinder also includes a **DAG variant** that enables the LLM generator to combine/merge multiple parent strategies together:
+* **DAG Iterations**: If enabled, Pathfinder runs a DAG step periodically at set intervals (e.g., every 5 iterations).
+* **Multi-Parent Selection**: The engine selects up to $N$ parent nodes (e.g., top 3) with the highest performance scores in the tree.
+* **Crossover Generation**: The LLM generator is supplied with the implementation history, code, and metrics of all selected parents and generates a unified, hybridized code variant.
+* **DAG Backpropagation**: The generated child node holds references to all its parent IDs (`dag_parent_ids`). Its score is backpropagated up to all parent nodes.
+* **Visualization**: The interactive tree visualizer dynamically detects DAG nodes and renders cross-cutting connections between merged nodes in the tree diagram.
+
+To run optimization with the DAG variant enabled:
+```bash
+python -m trading_optimizer.run \
+  --iterations 15 \
+  --enable-dag \
+  --dag-interval 5 \
+  --dag-num-parents 3
+```
+
+
 ### Main Parameters
 *   `--algorithm` / `--mode`: Selection mode: `puct` (default) or `mcts`.
 *   `--mcts`: Convenient shortcut flag to run standard MCTS (UCT) search instead of PUCT.
@@ -161,3 +179,6 @@ To prevent concurrent tree expansions from interfering with each other and corru
    - It copies the `live_trading_strategies_local` package (excluding outputs and strategy code) to ensure that the python execution and relative imports resolve in isolation.
 4. **Concurrent Run**: Using a `ThreadPoolExecutor`, candidates are generated and backtested in parallel within their respective sandbox directories.
 5. **Auto-Cleanup**: Once evaluation completes, the sandbox directories are automatically destroyed, and the best-performing code is merged back into the search tree.
+
+
+
