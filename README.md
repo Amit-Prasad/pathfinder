@@ -10,7 +10,8 @@ It executes code modifications inside parallel, sandboxed backtest environments,
 
 ```mermaid
 graph TD
-    Root[Root Node Baseline] --> Select{PUCT Selection}
+    Docs["Ideas from Deep Research / Documents"] --> Root[Root Node Baseline]
+    Root --> Select{PUCT Selection}
     Select --> |Leaf Node| DecRes{Decide Research}
     DecRes -->|YES| GoogleSearch[Grounded Web Search]
     DecRes -->|NO| IdeaGen[Idea Generator Agent]
