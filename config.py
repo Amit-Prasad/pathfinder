@@ -62,8 +62,3 @@ MAX_ITERATIONS = 10       # Number of MCTS selection/expansion loops
 SANDBOX_TIMEOUT = 600     # Subprocess execution timeout in seconds
 
 
-# Evaluation defaults
-DEFAULT_START_DATE = "2026-04-01"
-DEFAULT_END_DATE = "2026-04-05"
-DEFAULT_TEST_STRATEGY = "combined"  # Options: combined, random_30_days, random_range, random_days, random_hours, fixed
-USE_CHARGES = os.environ.get("USE_CHARGES", "true").lower() == "true"
