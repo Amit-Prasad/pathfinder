@@ -157,7 +157,7 @@ python main.py --algorithm mcts --iterations 5
 ### Directed Acyclic Graph (DAG) Variant
 By default, standard MCTS/PUCT generates new search nodes (child programs) by expanding a single parent node. Pathfinder also includes a **DAG variant** that enables the LLM generator to combine/merge multiple parent algorithms together:
 * **DAG Iterations**: If enabled, Pathfinder runs a DAG step periodically at set intervals (e.g., every 5 iterations).
-* **Multi-Parent Selection**: The engine selects up to $N$ parent nodes (e.g., top 3) with the highest performance scores in the tree.
+* **Multi-Parent Selection**: The engine uses a tournament selection mechanism to randomly sample a subset of nodes (e.g., 3 nodes) from the tree, identifying the highest-scoring candidate among them as the primary parent to merge with the other sampled nodes.
 * **Crossover Generation**: The LLM generator is supplied with the implementation history, code, and metrics of all selected parents and generates a unified, hybridized code variant.
 * **DAG Backpropagation**: The generated child node holds references to all its parent IDs (`dag_parent_ids`). Its score is backpropagated up to all parent nodes.
 * **Visualization**: The interactive tree visualizer dynamically detects DAG nodes and renders cross-cutting connections between merged nodes in the tree diagram.
