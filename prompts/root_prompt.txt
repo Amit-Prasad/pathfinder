@@ -1,9 +1,0 @@
-Optimize the Nifty 50 cash stocks intraday trading strategy located in live_trading_strategies_local/strategy.py.
-
-Our current strategy uses Anchored EMAs and ATRs to trade intraday momentum and pullbacks, resetting indicators on day opens to prevent overnight gap distortion.
-
-The goal is to improve this strategy to maximize profit percentage, minimize max drawdown, and maximize the profit factor / trade expectancy.
-
-IMPORTANT: The scoring system actively rewards strategy activity/frequency by adding a logarithmic trade count bonus: log_2(1 + number of trades). To maximize the score, your strategy should avoid overly conservative or restrictive filters that severely limit the trade frequency. Encourage a healthy, consistent volume of high-probability trades across Nifty 50 constituents while ensuring the trade quality is high enough to comfortably cover slippage and brokerage drag.
-
-Your logic should be written in a way that respects transaction drag (slippage/brokerage) and avoids high-frequency noise trading. Ensure all variables are initialized properly and the code is highly robust.

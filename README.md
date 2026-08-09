@@ -125,7 +125,7 @@ engine.run(objective="Optimize sorting runtime and memory footprint", initial_co
 ## 5. How to Use Pathfinder
 
 ### Run an Algorithm Discovery Loop
-Execute a search loop of $N$ iterations (default 10) with $K$ children proposed per expansion step (default 3):
+Execute a search loop of N iterations (default 10) with K children proposed per expansion step (default 3):
 
 ```bash
 python main.py --iterations 5 --children 3
