@@ -1,0 +1,10 @@
+Optimize the target algorithm located in target_module.py.
+
+The current implementation uses a basic recursive approach which suffers from high time complexity and memory overhead.
+
+The goal is to improve the algorithm to:
+1. Maximize execution speed (reduce computation time).
+2. Minimize memory/space complexity.
+3. Maintain 100% functional correctness against the unit tests.
+
+Your logic should be written in a robust, clean, and well-documented style. Ensure all edge cases are handled properly.
